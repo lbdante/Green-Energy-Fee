@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xsi:schemaLocation="Energy_x0020_Cost_x0020_Report http://fm-pwrmgr2k8/ReportServer_ION?%2FION%20Reports%2FION%20Report%20Packs%2FDefault%20Reports%2FEnergy%20Cost%20Report&amp;rs%3ACommand=Render&amp;rs%3AFormat=XML&amp;rs%3ASessionID=qmsnyx2imesjks55hjoj4q45&amp;rc%3ASchema=True" Name="Energy Cost Report" textbox3="All Sources" textbox11="Total ($)" textbox14="1361.568" textbox268="Total ($)" textbox269="1361.568" textbox5="ID: ee304ced-cbe7-431d-9ad9-4c0545515ca2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="Energy_x0020_Cost_x0020_Report">
+        <SingleMeterList>
+                <SingleMeterList_ListControl_Collection>
+                        <SingleMeterList_ListControl textbox47="Source: AH.E1_Main" textbox62="Energy Cost" textbox67="Energy Cost Total ($)" textbox65="0" textbox84="Energy Cost Total ($)" textbox83="0" textbox192="AH.E1_Main Total ($)" textbox191="1303.9550592" textbox49="AH.E1_Main Total ($)" textbox48="1303.9550592">
+                                <table1 textbox75="Total" textbox76="Unit Cost ($)" textbox78="Cost for Tariff ($)" textbox81="SubTotal ($)" textbox82="1303.9550592">
+                                        <table1_Group2_Collection>
+                                                <table1_Group2>
+                                                        <Detail_Collection>
+                                                                <Detail textbox69="Real Energy (kWh)" textbox70="17022.912" textbox71="0.0766" textbox72="1303.9550592" />
+                                                        </Detail_Collection>
+                                                </table1_Group2>
+                                        </table1_Group2_Collection>
+                                </table1>
+                                <table2 textbox97="Time of Use" textbox98="Total" textbox99="Unit Cost ($)" textbox100="Cost for Tariff ($)">
+                                        <table2_Group1_Collection>
+                                                <table2_Group1 textbox85="Real Energy (kWh)" textbox89="SubTotal ($)" textbox90="1303.9550592">
+                                                        <Detail_Collection>
+                                                                <Detail textbox93="17022.912" textbox94="0.0766" textbox95="1303.9550592" />
+                                                        </Detail_Collection>
+                                                </table2_Group1>
+                                        </table2_Group1_Collection>
+                                </table2>
+                                <list2 />
+                        </SingleMeterList_ListControl>
+                </SingleMeterList_ListControl_Collection>
+        </SingleMeterList>
+        <listAllMeterEnergy>
+                <listAllMeterEnergy_Group_Collection>
+                        <listAllMeterEnergy_Group textbox142="Energy Cost" textbox144="Energy Cost Total ($)" textbox143="0" textbox158="Energy Cost Total ($)" textbox157="0">
+                                <table6 textbox150="Total" textbox151="Unit Cost ($)" textbox152="Cost for Tariff ($)" textbox155="SubTotal ($)" textbox156="1303.9550592">
+                                        <table6_Group1_Collection>
+                                                <table6_Group1>
+                                                        <Detail_Collection>
+                                                                <Detail textbox145="Real Energy (kWh)" textbox146="17022.912" textbox147="0.0766" textbox148="1303.9550592" />
+                                                        </Detail_Collection>
+                                                </table6_Group1>
+                                        </table6_Group1_Collection>
+                                </table6>
+                                <table7 textbox178="Time of Use" textbox179="Total" textbox180="Unit Cost ($)" textbox181="Cost for Tariff ($)">
+                                        <table7_Group1_Collection>
+                                                <table7_Group1 textbox159="Real Energy (kWh)" textbox170="SubTotal ($)" textbox171="1303.9550592">
+                                                        <Detail_Collection>
+                                                                <Detail textbox174="17022.912" textbox175="0.0766" textbox176="1303.9550592" />
+                                                        </Detail_Collection>
+                                                </table7_Group1>
+                                        </table7_Group1_Collection>
+                                </table7>
+                        </listAllMeterEnergy_Group>
+                </listAllMeterEnergy_Group_Collection>
+        </listAllMeterEnergy>
+        <listAggregatedDemand>
+                <listAggregatedDemand_ListControl_Collection>
+                        <listAggregatedDemand_ListControl textbox2="Demand Cost (Independent)" textbox221="Demand Cost Total ($)" textbox141="0" textbox243="Demand Cost Total ($)" textbox242="0">
+                                <tblAggregatedDemand textbox233="Timestamp of Peak" textbox234="Max Value" textbox235="Unit Cost ($)" textbox236="Cost for Tariff ($)" textbox240="SubTotal ($)" textbox241="0" />
+                                <tblAggregatedDemandTou textbox263="Time of Use" textbox264="Timestamp of Peak" textbox265="Max Value" textbox266="Unit Cost ($)" textbox267="Cost for Tariff ($)" />
+                        </listAggregatedDemand_ListControl>
+                </listAggregatedDemand_ListControl_Collection>
+        </listAggregatedDemand>
+        <rectWages textbox273="WAGES Cost">
+                <tblWages textbox279="Name" textbox280="Source" textbox281="Measurement" textbox282="Total" textbox283="Unit Cost ($)" textbox284="Cost for Tariff ($)" textbox285="WAGES Cost Total ($)" textbox290="1361.568">
+                        <table4_Group1_Collection>
+                                <table4_Group1>
+                                        <table4_Group2_Collection>
+                                                <table4_Group2 textbox274="Steam" SourceName="AH.C1" textbox275="I11-Previous Interval Accumulation ()" textbox276="209472" textbox277="0.0065" textbox278="1361.568" />
+                                        </table4_Group2_Collection>
+                                </table4_Group1>
+                        </table4_Group1_Collection>
+                </tblWages>
+        </rectWages>
+        <listExtraFees />
+</Report>
