@@ -1,5 +1,6 @@
 import MySQLdb as mdb
 from xml.dom import minidom
+import conf
 
 def get_tags(xml_doc):
     tag_list = {}
@@ -30,4 +31,5 @@ def parse_xml(filename):
 
 
 data = parse_xml('data/xml/report.xml')
+print conf.username
 

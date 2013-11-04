@@ -1,5 +1,6 @@
 import MySQLdb as mdb
 from xml.dom import minidom
+import conf
  
 def getText(nodelist):
     rc = []
