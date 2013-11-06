@@ -1,0 +1,8 @@
+Green Energy Fee Project Readme
+
+Team Members:
+    Jordan Baker (j0bak3r[at]gmail[dot]com)
+    Tim Feierabend (tim.feierabend[at]gmail[dot]com)
+    
+Required Python Packages:
+    -xlrd (Reading .xlsx files)
