@@ -6,6 +6,8 @@ Team Members:
     
 Required Python Packages:
     -xlrd (Reading .xlsx files)
+    -MySQLdb (access MySQL databases)
+    -xml.dom (XML parsing) is this built in?
     
 -----------------------------------------
 - Documentation For Generating SW reports
