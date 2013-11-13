@@ -33,5 +33,5 @@ def parse_xml(filename):
     tag_list = get_tags(xml_doc)
     iter_tags(tag_list)
 
-data = parse_xml('data/xml/energyCostReport.xml')
+data = parse_xml('data/xml/report.xml')
 
