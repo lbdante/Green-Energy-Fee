@@ -4,36 +4,68 @@
 import math
 
 # Defines alphabet
+# DONE!
 def in_alpha(char):
     return char in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-# Translates a standard excel-like row,col coordinate
-# into a num,num coordinate
-# Done!
-def translate_from_excel(col, row):
-    end_row = int(row)
-    end_col = 0
-    for index in range(len(col)):
-        power = int(math.pow(26, (len(col) - 1) - index))
-        end_col = end_col + power * col_to_int(col[index])
-    return (end_col - 1, end_row - 1)
+# Searches the excel sheet for the abbreviated building name
+# and retursn the xlrd coordinates - returns None if none exist
+# DONE!
+def get_start_coords(excel_sheet, name, last_date):
+    for col in range(1, excel_sheet.ncols):
+        label = excel_sheet.cell(10, col).value
+        if label == name:
+            for row in range(19, excel_sheet.nrows):
+                if excel_sheet.cell(row, 1).value > last_date:
+                    return (row, col)
+
+# Generates a template insert statement for a table insertion
+# DONE!
+def gen_insert_stmt(table, numcols):
+    statement = 'INSERT INTO {}'.format(table)
+    statement = statement + ' VALUES ('
+    for val in range(numcols - 1):
+        statement = statement + '\'{}\', '
+    statement = statement + '\'{}\');'
+    return statement
     
 # Generates a SQL insertion statement to insert data into database
 # Todo
-def generate_statement(excel_sheet, excel_coords, db_col_name):
-    coords = translate_from_excel(*excel_coords)
-    return 'NOT DONE YET;'
-    
-    
-# Gets the date of the last entered SQL statement
-# Todo
-def get_last_date(date):
-    print "get_last_date: not implemented yet."
+def generate_statements(excel_sheet, blding_name, last_date):
+    start = get_start_coords(excel_sheet, blding_name, last_date)
+    if start == None:
+        return ''
+    end = (excel_sheet.nrows - 1, start[1])
+    queries = []
+    for row in range(start[0], end[0]+1):
+        # Convert the date entered in excel to SQL date syntax
+        date = excel_sheet.cell(row, 1).value
+        raw_date = date.split('/')
+        date = raw_date[0] + '-' + raw_date[1] + '-' + raw_date[2]
+        
+        # Read the value of the current cell
+        cell = excel_sheet.cell(row, start[1])
 
-# Converts a alphabetic letter to a int
-# Done!
-def col_to_int(col):
-    if(in_alpha(col)):
-        return int(col, base=36) - 9
+        # if the value of the current cell is not empty, generate statement
+        if cell.ctype != 0:
+            queries.append(gen_insert_stmt('entry', 6).format(
+                date,
+                4,
+                blding_name,
+                'hand',
+                1.0,
+                int(cell.value)
+                ))
+    return queries
+
+# Gets the name of the building
+# Todo - will be added with additional buildings
+def get_blding_name(abbrv):
+    if abbrv == 'BI':
+        return 'Biology Building'
+    elif abbrv == 'CB':
+        return 'Chemistry Building'
+    elif abbrv == 'PA':
+        return 'Performing Arts Center'
     else:
-        return -1
+        return 'UNDEFINED'
