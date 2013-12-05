@@ -61,8 +61,6 @@ def iter_tags(tag_list):
 
 def insert_data(data):
     try:
-        print conf.writer_username
-        print conf.writer_password
         # Replace the parameters here for using a different mysql server
         conn = mdb.connect(host=conf.server, user=conf.writer_username, passwd=conf.writer_password, db=conf.db)
         cur = conn.cursor()
