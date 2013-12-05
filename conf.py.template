@@ -1,0 +1,21 @@
+
+# To use this template, fill each variable value with appropriate data
+# and save file as 'conf.py'
+
+# Databse URL location and port
+db_url=
+
+# Database name
+db_name=
+
+# Databse login information
+username=
+
+# Database login password
+password=
+
+# Excel home directory | USED BY: parseXlsx
+excel_home=
+
+# Excel file to parse | USED BY: parseXlsx
+excel_file=
