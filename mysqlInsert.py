@@ -7,7 +7,7 @@ def insert_data(data):
         cur = conn.cursor()
         for row in data:
             #Insert each row of the array into the database
-            cur.execute("INSERT INTO gef (source, date, type, cost, units_total, total_cost) VALUES (%s, %s, %s, %s, %s, %s)", (row['source'], row['date'], row['type'], row['cost'], row['units_total'], row['total_cost']))
+            cur.execute("INSERT INTO Entry (source, date, type, cost, units_total, total_cost) VALUES (%s, %s, %s, %s, %s, %s)", (row['source'], row['date'], row['type'], row['cost'], row['units_total'], row['total_cost']))
         conn.commit()
         conn.close()
     except mdb.Error, e:
