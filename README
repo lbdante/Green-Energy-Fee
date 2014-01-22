@@ -1,13 +1,47 @@
 Green Energy Fee Project Readme
 
-Team Members:
-    Jordan Baker (j0bak3r[at]gmail[dot]com)
-    Tim Feierabend (tim.feierabend[at]gmail[dot]com)
+Members:
+	(Instructors)
+	
+		Chris Reedy 
+		- Chris.Reedy@wwu.edu
+		
+		Phillip Nordwall
+		- Phillip.Nordwall@wwu.edu
+	
+	(Current Members)
+	
+		Chia-Win(Calvin) Chang 
+		- changc4@students.wwu.edu
+		- 360-2246444
+		
+    		Monir Kohi 
+    		- kohim@students.wwu.edu
+    		
+    		Allen Suner 
+    		- sunera@students.wwu.edu
+    		
+ 		Bu(Bruce) Lu 
+ 		- lub@students.wwu.edu
+    	
+    	(Previous Members)
+    	
+		Jordan Baker 
+		- j0bak3r@gmail.com
+		
+		Tim Feierabend 
+		- tim.feierabend@gmail.com
+		
+	(Facility Contact)
+	
+		Greg Hough
+		- greg.hough@wwu.edu
+		
     
 Required Python Packages:
-    -xlrd (Reading .xlsx files)
-    -MySQLdb (access MySQL databases)
-    -xml.dom (XML parsing) is this built in?
+	-xlrd (Reading .xlsx files)
+	-MySQLdb (access MySQL databases)
+	-xml.dom (XML parsing) is this built in?
     
 -----------------------------------------
 - Documentation For Generating SW reports
@@ -30,9 +64,7 @@ Required Python Packages:
 - Additional Fees?
 - Reporting Period?
 
------------------------------
-- Need to know [talk to Greg (greg.hough@wwu.edu)]
------------------------------
+-----------------------------------------
 
 - Which report to use?
 - Should we use all sources?
