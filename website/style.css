@@ -15,7 +15,7 @@ body{
   width: 200px; /*Width of frame div*/
   height: 100%;
   overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
-  background: navy;
+  background: #0C3;
   color: white;
 }
 
@@ -25,7 +25,7 @@ body{
   width: 100%; /*Width of frame div*/
   height: 100px;
   overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
-  background: blue;
+  background: #0F9;
   color: white;
 }
 
