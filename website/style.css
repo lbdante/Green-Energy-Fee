@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    height: 100%;
+    max-height: 100%;
+  }
+
+#framecontent{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 200px; /*Width of frame div*/
+  height: 100%;
+  overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+  background: navy;
+  color: white;
+}
+
+#framecontent2{
+  position: absolute;
+  bottom: 0px;
+  width: 100%; /*Width of frame div*/
+  height: 100px;
+  overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+  background: blue;
+  color: white;
+}
+
+#maincontentcontainer{
+  position: fixed;
+  top: 0;
+  left: 200px; /*Set left value to WidthOfFrameDiv*/
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  background: #fff;
+}
+
+
+#maincontent{
+  position: fixed;
+  top: 0;
+  left: 0; /*Set left value to WidthOfFrameDiv*/
+  right: 0;
+  bottom: 100px;
+  overflow: auto;
+  background: #fff;
+}
+
+.innertube{
+  margin: 15px; /*Margins for inner DIV inside each DIV (to provide padding)*/
+}
