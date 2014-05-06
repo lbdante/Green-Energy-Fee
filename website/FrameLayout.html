@@ -36,11 +36,11 @@ Not sure what best approach with CSS layout is.
 		{ "Building":"Cras Dictrum", "Value" : 800},
 	],
 	
-	chart = new dimple.chart(svg, data),
+	chart = new dimple.chart(svg, data);
 	
 	// Bind data to axes
-	x = chart.addCategoryAxis("x", "Building"),
-	y = chart.addMeasureAxis("y", "Value"),
+	x = chart.addCategoryAxis("x", "Building");
+	y = chart.addMeasureAxis("y", "Value");
 	
 	// Make bar chart 
 	s = chart.addSeries(null, dimple.plot.bar);
