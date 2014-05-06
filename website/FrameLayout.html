@@ -1,50 +1,103 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Hey guys
+
+Right now, the HTML is a mess and I'm gonna clean it up. JS is pretty simple, feel free to play with it.
+Not sure what best approach with CSS layout is.
+-->
+
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>Dynamic Drive: CSS Left Frame Layout</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Dynamic Drive: CSS Left Frame Layout</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="http://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
+	<script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
 
+	<script>
+	window.onload = function(){
+	var svg = dimple.newSvg("#chartContainer", 800, 550),
+	data = [
+		{ "Building":"Arntzen Hall", "Value" : 450},
+		{ "Building":"Communications", "Value" : 503},
+		{ "Building":"Bond Hall", "Value" : 210},
+		{ "Building":"Academic Building", "Value" : 266},
+		{ "Building":"Biology", "Value" : 500},
+		{ "Building":"Old Main", "Value" : 123},
+		{ "Building":"Environmental Science", "Value" : 800},
+		{ "Building":"Lorem Ipsum", "Value" : 100},
+		{ "Building":"Dolor Sit Amet", "Value" : 50},
+		{ "Building":"Consectetur Adipiscing", "Value" : 762},
+		{ "Building":"Pellentesque", "Value" : 850},
+		{ "Building":"Suspendisse", "Value" : 300},
+		{ "Building":"Nunc", "Value" : 80},
+		{ "Building":"Cras Dictrum", "Value" : 800},
+	],
+	
+	chart = new dimple.chart(svg, data),
+	x = chart.addCategoryAxis("x", "Building"),
+	y = chart.addMeasureAxis("y", "Value"),
+	s = chart.addSeries(null, dimple.plot.bar);
+	chart.width = 700;
+	chart.height = 400;
+	x.addOrderRule("Building");
+	x.title = null;
+	y.title = "KWH used";
+
+	chart.draw();
+
+	x.shapes.selectAll("text").attr("transform",
+		function (d) {
+			return d3.select(this).attr("transform") + " translate(2, 35) rotate(-45)";
+		});
+	}
+
+	</script>
 </head>
 
 <body>
-    <div id="framecontent">
-        <div class="innertube">
 
-            <h1>LOGO</h1>
-            <h3>Green Energy Fee Information</h3>
-            <p>Brought to you by cool WWU CS people, the GEF info website gives information on how we are using the GEF and how much energy you punks are using.
-           
-            <div id="buildinglist">
-            <!-- Dynamically generate or what? -->
-                <a href="">Buchanan Towers</a><br/>
-                <a href="">Old Main</a><br/>
-                <a href="">Bond Hall</a><br/>
-                <a href="">Communications Facility</a><br/>
-                <a href="">Academic West</a><br/>
-                <a href="">Academic Building</a><br/>
-                <a href="">Biology</a><br/>
-            </div>
-        </div>
-    </div>
-   
-   
-    <div id="maincontentcontainer">
-   
-      <div id="framecontent2">
-          <div class="innertube">
-              <center>links and stuff</center>
-          </div>
-      </div>
-      <div class="innertube">
+	<!-- Left floating nav -->
+	<div id="framecontent">
+		<div class="innertube">
+			
+			<!-- Logo -->
+			<img src="http://www.wwu.edu/sustain/img/gef-graphic.jpg" width="170" height="120"/>
+			
+			<!-- Left-nav content -->
+			<h3>Green Energy Fee Information</h3>
+			<p>The GEF website contains information on the buildings on the WWU campus and usage of energy. !TODO - fill out with proper text!</p>
 
-          <h1>Content here</h1>
-          <p>Cool pictures and stuff</p>
-         
-      </div>
-    </div>
+			<div id="buildingList">
+				<!-- Dynamically generate or what? Probably? -->
+				<a href="">All</a><br/>
+				<a href="">Buchanan Towers</a><br/>
+				<a href="">Old Main</a><br/>
+				<a href="">Bond Hall</a><br/>
+				<a href="">Communications Facility</a><br/>
+				<a href="">Academic West</a><br/>
+				<a href="">Academic Building</a><br/>
+				<a href="">Biology</a><br/>
+				<a href="">Arntzen Hall</a><br/>
+				<a href="">Miller Hall</a><br/>
+				<a href="">TO ADD</a><br/>
+			</div>
+		</div>
+	</div>
 
+	<!-- Main content and footer -->
+	<div id="maincontentcontainer">
 
+		<!-- Footer -->
+		<div id="framecontent2">
+			Links to multiple views (electric, gas, waste, by year, etc.) go here
+		</div>
+
+		<!-- Main content -->
+		<div id="maincontent">
+			<h2>Electricity Usage - All - June</h2>
+			<div id="chartContainer"></div>
+		</div>
+	</div>
 </body>
 </html>

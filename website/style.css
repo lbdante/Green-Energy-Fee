@@ -1,55 +1,77 @@
 body{
-    margin: 0;
-    padding: 0;
-    border: 0;
-    overflow: hidden;
-    height: 100%;
-    max-height: 100%;
-  }
-
-#framecontent{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 200px; /*Width of frame div*/
-  height: 100%;
-  overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
-  background: #0C3;
-  color: white;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	overflow: auto
 }
 
-#framecontent2{
-  position: absolute;
-  bottom: 0px;
-  width: 100%; /*Width of frame div*/
-  height: 100px;
-  overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
-  background: #0F9;
-  color: white;
+h2{
+	text-align: center;
+}
+
+a:link {
+	color: #000;
+}
+a:visited {
+	color: #555;
+}
+a:hover {
+	color: #000;
+}
+a:active {
+	color: #000;
+}
+
+#buildingList{
+	font-size: 11px;
+}
+
+#chartContainer {
+	margin: -70px auto 100px auto;
+	width: 800px;
+}
+
+#framecontent{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 200px; /*Width of frame div*/
+	height: 100%;
+	overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+	background: #0C3;
+}
+
+	#framecontent2{
+	position: fixed;
+	bottom: 0px;
+	width: 100%; /*Width of frame div*/
+	height: 80px;
+	overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+	background: #E6E5DD;
 }
 
 #maincontentcontainer{
-  position: fixed;
-  top: 0;
-  left: 200px; /*Set left value to WidthOfFrameDiv*/
-  right: 0;
-  bottom: 0;
-  overflow: auto;
-  background: #fff;
+	position: fixed;
+	top: 0;
+	left: 200px; /*Set left value to WidthOfFrameDiv*/
+	right: 0;
+	bottom: 0;
+	overflow: auto;
+	background: #fff;
 }
 
 
 #maincontent{
-  position: fixed;
-  top: 0;
-  left: 0; /*Set left value to WidthOfFrameDiv*/
-  right: 0;
-  bottom: 100px;
-  overflow: auto;
-  background: #fff;
+	position: absolute;
+	top: 0;
+	left: 0; /*Set left value to WidthOfFrameDiv*/
+	right: 0;
+	bottom: 80px;
+	overflow: none;
+	background: #fff;
 }
 
 .innertube{
-  margin: 15px; /*Margins for inner DIV inside each DIV (to provide padding)*/
+	margin: 15px; /*Margins for inner DIV inside each DIV (to provide padding)*/
 }
