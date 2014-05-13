@@ -1,0 +1,24 @@
+{
+  "displayName": "Old Main",
+  "buildingCode": "OM",
+  "currentYear": 2014,
+  "previousYear": 2013
+  "utilities": [
+    "gas": {
+      "unitMeasure": "KWH",
+      "currentYearValue": 1999394125,
+      "previousYearValue": 192512521
+    },
+    "electric": {
+      "unitMeasure": "KWH",
+      "currentYearValue": 1999394125,
+      "previousYearValue": 192512521
+    },
+    "steam": { ... },
+    "water": { ... },
+    "refuse": { ... }
+  ],
+    "currentYearCo2Value": 22563,
+    "previousYearCo2Value": 124912515231,
+    "co2UnitMeasure": "Lbs"
+}
