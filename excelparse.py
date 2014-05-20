@@ -213,8 +213,9 @@ def getCo2Data(year, sheets, cColumn, building_row):
 
 #gets the building name on a sheet given an specific row
 def getBuildingName(sheet, building_row):
-	name = sheet.cell_value(building_row, 0)
-	return str(name)
+	name = str(sheet.cell_value(building_row, 0))
+	name = name.split()
+	return name
 
 if __name__=="__main__":
 	main()
