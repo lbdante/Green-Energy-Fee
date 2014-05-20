@@ -29,24 +29,28 @@ class Building:
 		self.code = code
 
 		electric = {
+			'type': "electric",
 			'unit': "kWh",
 			'prevMeasurement': None,
 			'currMeasurement': None
 		}
 
 		steam = {
+			'type': "steam",
 			'unit': "thm",
 			'prevMeasurement': None,
 			'currMeasurement': None
 		}
 
 		water = {
+			'type': "water",
 			'unit': "CCF",
 			'prevMeasurement': None,
 			'currMeasurement': None
 		}
 
 		refuse = {
+			'type': "refuse",
 			'unit': "yds",
 			'prevMeasurement': None,
 			'currMeasurement': None
@@ -214,7 +218,7 @@ def getCo2Data(year, sheets, cColumn, building_row):
 #gets the building name on a sheet given an specific row
 def getBuildingName(sheet, building_row):
 	name = str(sheet.cell_value(building_row, 0))
-	name = name.split()
+	name = name.strip()
 	return name
 
 if __name__=="__main__":
