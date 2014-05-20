@@ -16,56 +16,8 @@ Not sure what best approach with CSS layout is.
 	<script src="http://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
 	<script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
 
-	<script>
-	window.onload = function(){
-	var svg = dimple.newSvg("#chartContainer", 800, 550),
-	data = [
-		{ "Building":"Arntzen Hall", "Value" : 999},
-		{ "Building":"Communications", "Value" : 503},
-		{ "Building":"Bond Hall", "Value" : 210},
-		{ "Building":"Academic Building", "Value" : 266},
-		{ "Building":"Biology", "Value" : 500},
-		{ "Building":"Old Main", "Value" : 123},
-		{ "Building":"Environmental Science", "Value" : 800},
-		{ "Building":"Lorem Ipsum", "Value" : 100},
-		{ "Building":"Dolor Sit Amet", "Value" : 50},
-		{ "Building":"Consectetur Adipiscing", "Value" : 762},
-		{ "Building":"Pellentesque", "Value" : 850},
-		{ "Building":"Suspendisse", "Value" : 300},
-		{ "Building":"Nunc", "Value" : 80},
-		{ "Building":"Cras Dictrum", "Value" : 800},
-	],
-	
-	chart = new dimple.chart(svg, data);
-	
-	// Bind data to axes
-	x = chart.addCategoryAxis("x", "Building");
-	y = chart.addMeasureAxis("y", "Value");
-	
-	// Make bar chart 
-	s = chart.addSeries(null, dimple.plot.bar);
-	
-	// Width/height
-	chart.width = 700;
-	chart.height = 400;
-	
-	// Order alphebetically by building
-	x.addOrderRule("Building");
-	
-	// No x label because it's obvious
-	x.title = null;
-	y.title = "KWH used";
-
-	chart.draw();
-
-	// Rotate x axis labels (building names) 45 degrees
-	x.shapes.selectAll("text").attr("transform",
-		function (d) {
-			return d3.select(this).attr("transform") + " translate(2, 35) rotate(-45)";
-		});
-	}
-
-	</script>
+	<!-- Request for local graphing js -->
+	<script src="graphs.js"></script>
 </head>
 
 <body>
@@ -75,13 +27,14 @@ Not sure what best approach with CSS layout is.
 		<div class="innertube">
 			
 			<!-- Logo -->
+			<!-- TODO: strip logo of white background -OR- change background to white -->
 			<img src="http://www.wwu.edu/sustain/img/gef-graphic.jpg" width="170" height="120"/>
 			
 			<!-- Left-nav content -->
 			<h3>Green Energy Fee Information</h3>
-			<p>The GEF website contains information on the buildings on the WWU campus and usage of energy. !TODO - fill out with proper text!</p>
+			<p>The GEF website contains information on the Consumables on the WWU campus and usage of energy. !TODO - fill out with proper text!</p>
 
-			<div id="buildingList">
+			<div id="ConsumableList">
 				<!-- Dynamically generate or what? Probably? -->
 				<a href="">All</a><br/>
 				<a href="">Buchanan Towers</a><br/>
@@ -89,7 +42,7 @@ Not sure what best approach with CSS layout is.
 				<a href="">Bond Hall</a><br/>
 				<a href="">Communications Facility</a><br/>
 				<a href="">Academic West</a><br/>
-				<a href="">Academic Building</a><br/>
+				<a href="">Academic Consumable</a><br/>
 				<a href="">Biology</a><br/>
 				<a href="">Arntzen Hall</a><br/>
 				<a href="">Miller Hall</a><br/>
@@ -108,7 +61,7 @@ Not sure what best approach with CSS layout is.
 
 		<!-- Main content -->
 		<div id="maincontent">
-			<h2>Electricity Usage - All - June</h2>
+			<h2>Nuchannan Towers - Energy Usage</h2>
 			<div id="chartContainer"></div>
 		</div>
 	</div>
