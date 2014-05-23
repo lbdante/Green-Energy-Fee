@@ -3,8 +3,18 @@
 
 	<!-- head -->
 	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+	
 		<title>Green Energy Fee</title>
-		<link rel="stylesheet" type="text/css" href="IndexStyle.css">		
+		<link rel="stylesheet" type="text/css" href="IndexStyle.css">	
+		<!-- Requests for d3 and dimple libraries -->
+		<script src="http://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
+		<script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+		<!-- jQuery (for JSON parsing and AJAX) -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<!-- Request for local graphing js -->
+		<script src="graphs.js"></script>	
 
 	</head>
 	
@@ -54,12 +64,9 @@
 			- content_footer
 			-->
 			<div id="content">			
-				<!-- content_main -->
-				<div id="content_main">
-					<h1>content_main</h1>
-					<p>Whatever info need to be displayed</p>
-				</div>
-				
+				<!-- chartContainer -->
+				<h1 id="buildingName"></h1>
+				<div id="chartContainer"></div>				
 				<!-- content_footer -->
 				<div id="content_footer">
 					<h3>content_footer<h3>

@@ -45,9 +45,8 @@ body{
 }
 
 #chartContainer{
-	width: 100%;
-	height: 80%;
-	background-color: lime;	
+	margin: -70px auto 100px auto;
+	width: 800px;
 }
 
 #content_footer{
