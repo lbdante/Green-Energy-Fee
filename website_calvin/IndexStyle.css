@@ -1,59 +1,77 @@
-body{
-	background-color: gray;
+
+body
+{		
+	background-image:url('temp_background.jpg');
+	background-repeat:repeat-x;
+	overflow: hidden;		
 	margin: 0;
-	padding: 0;
-	border: 0;
-	overflow: auto
 }
 
+
 /* container */
-#container{
-	background-color: green;	
+#container
+{	
+
 	width:100%;
-	height:100%;
-	margin-left: auto;
-	margin-right: auto;
+	height:100%;	
 }
 
 /* navigation */
-#navigation{
-	width: 250px;
+#navigation
+{
+
+	background-color: 99FFCC;
 	height: 100%;
-	background-color: red;
-	width: 200px;
-	float: left;	
+	width: 255px;
+	margin-left:250px;
+	float: left;
+	opacity : 0.9;
 }
 
-#navigation_header{
-	background-color: blue;
+#navigation_header
+{
+	height: 35%;
 }
 
-#navigation_list{	
-	background-color: yellow;	
+#navigation_list
+{	
+	height: 20%;
+	font-size: 15px;
 }
 
-#navigation_footer{
-	background-color: 666;
+#navigation_footer
+{
+	height: 45%;
 }
 
 /* content */
-#content{	
-	width: 100%;
-	height: 100%;
+#content
+{		
+	background-image:url('temp_OM.JPG');
+	width: 1000px;
+	height: 100%;	
+	float: left;	
 	background-color: white;
-	bottom: 80px;
+	opacity : 0.9;
 }
 
-#chartContainer{
-	width: 100%;
-	height: 80%;
-	background-color: lime;	
+#chartContainer
+{	
+	background-color: white;
+	width:800px;		
+	height: 550px;	
+	margin-top: 400px;
+	margin: 0 auto;	
+	opacity : 1;
 }
 
-#content_footer{
+#content_footer
+{		
+	background-color: white;
 	width: 100%;
-	height: 10%;
-	background-color: orange;		
+	margin-top: 100px;
+	height: 200px;
+	opacity : 1;
 }
 
 
