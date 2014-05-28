@@ -106,7 +106,9 @@ window.onload = function(){
 	
 	// Width/height
 	chart.width = 900;
-	chart.height = 500;	
+	chart.height = 500;
+	
+	chart.fontSize = "20px";
 	
 	// Order alphebetically by Consumable
 	x.addOrderRule("Year", true);

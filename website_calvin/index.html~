@@ -37,7 +37,8 @@
 				<!-- navigation_header -->
 				<div id="navigation_header">
 					<!-- logo -->					
-					<img src="logo.png"/>					
+					<img src="logo.png"/>
+					<!-- width="255" height="255"/> -->
 					<h3>navigation_header</h3>
 				</div>
 				<!-- navigation_list -->
