@@ -1,0 +1,86 @@
+<!-- html -->
+<html>
+
+	<!-- head -->
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+	
+		<title>Green Energy Fee</title>
+		<link rel="stylesheet" type="text/css" href="IndexStyle.css">	
+		<!-- Requests for d3 and dimple libraries -->
+		<script src="http://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
+		<script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+		<!-- jQuery (for JSON parsing and AJAX) -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<!-- Request for local graphing js -->
+		<script src="graphs.js"></script>	
+
+	</head>
+	
+	<!-- body -->
+	<body>
+	
+		<!-- 
+		container:
+		contain all the elements for the website 
+		-->		
+		<div id="container">
+		
+			<!-- 
+			navigation section contains:
+			- navigation_header
+			- navigation_list
+			- nagivation_footer
+			-->
+			<div id="navigation">
+				<!-- navigation_header -->
+				<div id="navigation_header">
+					<!-- logo -->					
+					<img src="logo.png"/>					
+					<h3>navigation_header</h3>
+				</div>
+				<!-- navigation_list -->
+				<div id="navigation_list">							
+					<a class="button" href="?building=BT">Buchanan Towers</a><br/>
+					<a class="button" href="?building=OM">Old Main</a><br/>
+					<a class="button" href="?building=BH">Bond Hall</a><br/>
+					<a class="button" href="?building=CF">Communications Facility</a><br/>
+					<a class="button" href="?building=AW">Academic West</a><br/>
+					<a class="button" href="?building=AB">Academic Building</a><br/>
+					<a class="button" href="?building=BI">Biology</a><br/>
+					<a class="button" href="?building=AH">Arntzen Hall</a><br/>
+					<a class="button" href="?building=MH">Miller Hall</a><br/>					
+				</div>
+				
+				<!-- navigation_footer -->
+				<div id="navigation_footer">
+					<h3>navigation_footer</h3>
+				</div>			
+			</div>
+			
+			<!-- 
+			content section contains:
+			- content_main
+			- content_footer
+			-->
+			<div id="content">			
+				
+				<!-- chartContainer -->				
+				<div id="chartContainer">					
+					
+					<div id="chart">
+						<h1 id="buildingName" align="center"></h1>
+					</div>
+				</div>	
+							
+				<!-- content_footer -->
+				<div id="content_footer">
+					<h3>content_footer<h3>					
+				</div>		
+			</div>				
+		</div>
+	</body>
+</html>
+
+
