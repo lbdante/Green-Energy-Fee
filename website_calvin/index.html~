@@ -42,15 +42,15 @@
 				</div>
 				<!-- navigation_list -->
 				<div id="navigation_list">							
-					<a class="button" href="?building=BT">Buchanan Towers</a><br/>
-					<a class="button" href="?building=OM">Old Main</a><br/>
-					<a class="button" href="?building=BH">Bond Hall</a><br/>
-					<a class="button" href="?building=CF">Communications Facility</a><br/>
-					<a class="button" href="?building=AW">Academic West</a><br/>
-					<a class="button" href="?building=AB">Academic Building</a><br/>
-					<a class="button" href="?building=BI">Biology</a><br/>
-					<a class="button" href="?building=AH">Arntzen Hall</a><br/>
-					<a class="button" href="?building=MH">Miller Hall</a><br/>					
+					<a href="?building=BT">Buchanan Towers</a><br/>
+					<a href="?building=OM">Old Main</a><br/>
+					<a href="?building=BH">Bond Hall</a><br/>
+					<a href="?building=CF">Communications Facility</a><br/>
+					<a href="?building=AW">Academic West</a><br/>
+					<a href="?building=AB">Academic Building</a><br/>
+					<a href="?building=BI">Biology</a><br/>
+					<a href="?building=AH">Arntzen Hall</a><br/>
+					<a href="?building=MH">Miller Hall</a><br/>					
 				</div>
 				
 				<!-- navigation_footer -->
