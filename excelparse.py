@@ -1,15 +1,13 @@
-#!usr/bin/python
-
 #######################
 # Author: Allen Suner #
-# Date: 05/15/2013    #
+# Date: 05/26/2014    #
 #######################
 
 #imports
 import xlrd
 import json
-import argparse
 from datetime import date
+import calendar
 
 #python object that will be
 #translated into a JSON string
@@ -60,35 +58,17 @@ class Building:
 		self.utilities = [electric, steam, water, refuse]
 
 #main function
-def main():
-	building, book, code = parse_args()
-	buildString(building, book, code)
-
-	JSONString = json.dumps(building.__dict__, indent =4, sort_keys=True)
-
-	print JSONString
-
-#parsing command line arguements
-def parse_args():
-	parser = argparse.ArgumentParser()
-	parser.add_argument("-f", help="filename to be parsed")
-	parser.add_argument("-bc", help="two-letter building code")
-	args = vars(parser.parse_args())
-	filename = args['f']
-	code = args['bc']
-
+def buildString(filename, code):
 	building = Building(code)
 	book = xlrd.open_workbook(filename)
 
-	#check to see if filename has data
-	if (len(book.sheet_names()) == 0):
-		raise Exception("File: " + filename + " has no data to read.")
-	else:
-		return building, book, code
+	build(building, book, code)
+	JSONString = json.dumps(building.__dict__, indent = 4)
+	return JSONString
 
 #building a JSON string from the
 #two letter building code
-def buildString(building, book, code):
+def build(building, book, code):
 
 	#worksheets
 	currElectric = book.sheet_by_name('FY2014 GEFdash Elec kWh')
@@ -132,32 +112,39 @@ def buildString(building, book, code):
 		utilCount += 1
 		sheets = util
 
-		for sh in sheets:
-			#find the header
-			header_row, building_col = findHeaderRow(sheets[sh], code)
-			building_row = findBuildingRow(sheets[sh], code, header_row, building_col)
+		try:
+			for sh in sheets:
+				#find the header
+				header_row, building_col = findHeaderRow(sheets[sh], code)
+				building_row = findBuildingRow(sheets[sh], code, header_row, building_col)
 
-			mColumn = findMeasurementColumn(sheets[sh], header_row)
-			cColumn = findCo2Column(sheets[sh], header_row)
+				mColumn = findUtilityColumn(sheets[sh], header_row)
+				cColumn = findCo2Column(sheets[sh], header_row)
 
-			if sh == 0:
-				prevM = getMeasurement(1, sheets, mColumn, building_row)
-				utility = building.utilities[utilCount]
-				utility['prevMeasurement'] = prevM
-				if (utilCount == 0):
-					data = getCo2Data(1, sheets, cColumn, building_row)
-					building.prevCo2 = data
-			else:
-				currM = getMeasurement(0, sheets, mColumn, building_row)
-				utility = building.utilities[utilCount]
-				utility['currMeasurement'] = currM
-				if (utilCount == 0):
-					data = getCo2Data(0, sheets, cColumn, building_row)
-					building.currCo2 = data
+				if sh == 0:
+					prevM = getMeasurement(1, sheets, mColumn, building_row)
+					utility = building.utilities[utilCount]
+					utility['prevMeasurement'] = prevM
+					if (utilCount == 0):
+						data = getCo2Data(1, sheets, cColumn, building_row)
+						building.prevCo2 = data
+				else:
+					currM = getMeasurement(0, sheets, mColumn, building_row)
+					utility = building.utilities[utilCount]
+					utility['currMeasurement'] = currM
+					if (utilCount == 0):
+						data = getCo2Data(0, sheets, cColumn, building_row)
+						building.currCo2 = data
 
-			building.name = getBuildingName(sheets[sh], building_row)
+				building.name = getBuildingName(sheets[sh], building_row)
 
-#finds header row
+		except Exception, e:
+			pass
+
+	if (building_row == None):
+		raise Exception("Building with code: " + code + " does not exist in worksheets.")
+
+#finds the header row
 def findHeaderRow(sheet, code):
 	num_rows = sheet.nrows - 1
 	num_cells = sheet.ncols - 1
@@ -172,7 +159,7 @@ def findHeaderRow(sheet, code):
 			if (value == 'BLDG ID' or value == 'Loc ID'):
 				return header_row, header_cell
 
-#find the building row
+#finds the building row
 def findBuildingRow(sheet, code, header_row, building_col):
 	#iterate down the BLDG ID Column
 	building_row = header_row
@@ -185,8 +172,8 @@ def findBuildingRow(sheet, code, header_row, building_col):
 
 	raise Exception("Building with code: " + code + " does not have data in this file.")
 
-#finds the measurement column
-def findMeasurementColumn(sheet, header_row):
+#finds the utility column
+def findUtilityColumn(sheet, header_row):
 	mCol = -1
 	num_cells = sheet.ncols - 1
 	while mCol < num_cells:
@@ -195,6 +182,7 @@ def findMeasurementColumn(sheet, header_row):
 		if (str(value).startswith('GraphYTD')):
 			return mCol
 
+#finds the Co2 column
 def findCo2Column(sheet, header_row):
 	cCol = -1
 	num_cells = sheet.ncols -1
@@ -204,13 +192,13 @@ def findCo2Column(sheet, header_row):
 		value = ' '.join(str(value).split())
 		if (str(value) == 'YTD CO2 SUM'):
 			return cCol
-	
-#gets a measurement
+
+#gets a utility measurement
 def getMeasurement(year, sheets, mColumn, building_row):
-	#BUG BUG - returns a weird float
 	measurement = sheets[year].cell_value(building_row, mColumn)
 	return int(measurement)
 
+#gets a Co2 measurment
 def getCo2Data(year, sheets, cColumn, building_row):
 	measurement = sheets[year].cell_value(building_row, cColumn)
 	return int(measurement)
@@ -220,6 +208,3 @@ def getBuildingName(sheet, building_row):
 	name = str(sheet.cell_value(building_row, 0))
 	name = name.strip()
 	return name
-
-if __name__=="__main__":
-	main()
