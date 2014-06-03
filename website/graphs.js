@@ -5,6 +5,23 @@ function getParameterByName(name) {
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+function fillBuildingTitle(buildingCode) {
+	buildings = {
+		"OM":"Old Main",
+		"BT":"Buchannan towers",
+		"BH":"Bond Hall",
+		"AI":"Academic Instructional Center",
+		"CF":"Communications Facility",
+		"BI":"Biology",
+		"AZ":"Arntzen Hall",
+		"MH":"Miller Hall"
+	}
+
+	if (buildings.hasOwnProperty(buildingCode)) {
+		$('#buildingName').text(buildings[buildingCode] + " - Utility Usage");
+	}
+}
+
 // Given a building code ("OM"), get the JSON representation of waste, etc.
 function getBuildingJSON(buildingCode) {
   
@@ -89,7 +106,6 @@ function transformJsonToGraphData(json) {
 function makeGraph(json) {
 	// Change title of page to building name
 	var buildingName = json.displayName;
-	$('#buildingName').text(buildingName + " - Energy Usage");
 	
 	chart = new dimple.chart(svg, data);
 	
@@ -132,17 +148,9 @@ window.onload = function(){
 	//svg = dimple.newSvg("#chartContainer", 800, 550),
 	svg = dimple.newSvg("#chart", "100%", "100%");
 	
-	// Get requested building from querystring
-	buildingCode = getParameterByName("building").toUpperCase();
-
+	buildingCode = getParameterByName("building");
 	// Request JSON building data
 	json = getBuildingJSON(buildingCode);
 	
-	
-	
-	// Rotate x axis labels (Consumable names) 45 degrees
-	//x.shapes.selectAll("text").attr("transform",
-	//	function (d) {
-	//		return d3.select(this).attr("transform") + " translate(2, 35) rotate(-45)";
-	//	});
+	fillBuildingTitle(buildingCode);
 }
