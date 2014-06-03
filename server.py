@@ -26,3 +26,6 @@ cherrypy.quickstart(Root())
 #and port of querying server
 
 #TEAM MEETING FRIDAY AFTER CLASS
+#define index in class root
+#outside of the definition of index do index.exposed = true
+#in the function index, return the return html

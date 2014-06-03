@@ -9,59 +9,76 @@ function getParameterByName(name) {
 function getBuildingJSON(buildingCode) {
   
 	console.log("getBuildingJSON called with " + buildingCode);
-	// Make AJAX request
-	// someurl.cs.wwu.edu/getJsonBuildingData.cgi?buildingCode= + buildingCode;
-	var json = {
-		"displayName": "Old Main",
-		"buildingCode": "OM",
-		"currentYear": 2014,
-		"previousYear": 2013,
-		"utilities": [
-		{
-		"type": "Natural Gas",
-		"unitMeasure": "KWH",
-		"currentYearValue": 1351,
-		"previousYearValue": 852
-		},
-		{
-		"type": "Electric",
-		"unitMeasure": "KWH",
-		"currentYearValue": 1025,
-		"previousYearValue": 1526
-		},
-		{
-		"type": "Garbage",
-		"unitMeasure": "KWH",
-		"currentYearValue": 300,
-		"previousYearValue": 400
-		},
-		{
-		"type": "Steam",
-		"unitMeasure": "Lbs",
-		"currentYearValue": 210,
-		"previousYearValue": 512
-		}
-		],
-		"currentYearCo2Value": 22563,
-		"previousYearCo2Value": 124912515231,
-		"co2UnitMeasure": "Lbs"
-		};
 	
+	if (buildingCode == "" || buildingCode == null) return;
+
+	requestAddress = "http://localhost:8080/lookup?code=" + buildingCode;
+
+        console.log(requestAddress);
+	$.getJSON(requestAddress , function (response) { 
+		console.log("AJAX respone recieved");
+		jsonData = transformJsonToGraphData(response);
+		jsonData = normalizeGraphData(jsonData);		
+
+		makeGraph(jsonData);
+	});
+}
+
+// Normalizes until I can figure out how to show percentages
+function normalizeGraphData(json) {
+	var firstIsBigger;
+	var bigger;
+	var smaller;
+
+	for (i = 0; i < json.length; i += 2) {
+		if (json[i].Value > json[i+1].Value) {
+			firstIsBigger = true;
+			bigger = json[i].Value;
+			smaller = json[i + 1].Value;
+		} else {
+			firstIsBigger = false;
+			bigger = json[i + 1].Value;
+			smaller = json[i].Value;
+		} 
+
+
+		ratio =  smaller / bigger;
+		ratioRounded = Math.round(ratio * 100);
+
+		if (firstIsBigger) {
+			json[i].Value = 100;
+			json[i + 1].Value = ratioRounded;
+		} else {
+			json[i].Value = ratioRounded;
+			json[i + 1].Value = 100;
+		}
+
+		console.log("ratio: " + ratio);
+	}
+
 	return json;
 }
 
 // Transform a json object to a graph data object
 function transformJsonToGraphData(json) {
 	numberOfUtilities = json.utilities.length;
-	currentYear = json.currentYear;
-	previousYear = json.previousYear;
+	currentYear = json.currYear;
+	previousYear = json.prevYear;
+
+	console.log("Number of utilities is: " + numberOfUtilities);
+	console.log("Current year is: " + currentYear);
+	console.log("Prev year is: " + previousYear);
 	
 	data = [];
 	
 	for (i = 0; i < numberOfUtilities; i++) {
 		util = json.utilities[i];
-		data.push({ "Consumable":util.type, "Year":currentYear, "Value": util.currentYearValue});
-		data.push({ "Consumable":util.type, "Year":previousYear, "Value": util.previousYearValue});
+
+		if (util.currMeasurement == null) continue;
+
+		console.log("Consumable: " + util.type + " Year: " + currentYear + " Value: " + util.currMeasurement);
+		data.push({ "Consumable":util.type, "Year":currentYear, "Value": util.currMeasurement});
+		data.push({ "Consumable":util.type, "Year":previousYear, "Value": util.prevMeasurement});
 	}
 	
 	console.log(data);
@@ -69,17 +86,7 @@ function transformJsonToGraphData(json) {
 	return data;
 }
 
-window.onload = function(){
-	//svg = dimple.newSvg("#chartContainer", 800, 550),
-	svg = dimple.newSvg("#chart", "100%", "100%");
-	
-	// Get requested building from querystring
-	buildingCode = getParameterByName("building");
-
-	// Request JSON building data
-	json = getBuildingJSON(buildingCode);
-	data = transformJsonToGraphData(json);
-	
+function makeGraph(json) {
 	// Change title of page to building name
 	var buildingName = json.displayName;
 	$('#buildingName').text(buildingName + " - Energy Usage");
@@ -105,7 +112,7 @@ window.onload = function(){
 	s = chart.addSeries("Year", dimple.plot.bar);
 	
 	// Width/height
-	chart.width = 900;
+	chart.width = 750;
 	chart.height = 500;	
 	
 	// Order alphebetically by Consumable
@@ -113,12 +120,25 @@ window.onload = function(){
 	
 	// No x label because it's obvious
 	x.title = null;
-	y.title = "WHAT SHOULD THIS BE?";
+	y.title = "Percentage";
 
 	legend = chart.addLegend(500, 20, "100%", 400, "left", s);
 	legend.fontSize = "14px"
 	
 	chart.draw();
+}
+
+window.onload = function(){
+	//svg = dimple.newSvg("#chartContainer", 800, 550),
+	svg = dimple.newSvg("#chart", "100%", "100%");
+	
+	// Get requested building from querystring
+	buildingCode = getParameterByName("building").toUpperCase();
+
+	// Request JSON building data
+	json = getBuildingJSON(buildingCode);
+	
+	
 	
 	// Rotate x axis labels (Consumable names) 45 degrees
 	//x.shapes.selectAll("text").attr("transform",
