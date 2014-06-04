@@ -1,16 +1,18 @@
+console.log('Loading a web page');
+ 
 var page = require('webpage').create();
-page.viewportSize = { width: 320, height: 480 };
-page.open('http://news.google.com/news/i/section?&topic=t', function (status) {
+var name = "OM";
+var url = "http://140.160.141.163/website/?building=" + name;
+page.viewportSize = { width: 2000, height: 768 };
+page.open(url, function (status) {
     if (status !== 'success') {
-        console.log('Unable to access the network!');
+        console.log('Unable to access the network!'); 
+		phantom.exit();
     } else {
-        page.evaluate(function () {
-            var body = document.body;
-            body.style.backgroundColor = '#fff';
-            body.querySelector('div#title-block').style.display = 'none';
-            body.querySelector('form#edition-picker-form').parentElement.parentElement.style.display = 'none';
-        });
-        page.render('technews.png');
+          window.setTimeout(function () {
+            page.render(name + '.png');
+			phantom.exit();
+        }, 1000);
     }
-    phantom.exit();
+   
 });
