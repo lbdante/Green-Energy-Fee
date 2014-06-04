@@ -38,27 +38,14 @@ function normalizeGraphData(json) {
 	var smaller;
 
 	for (i = 0; i < json.length; i += 2) {
-		if (json[i].Value > json[i+1].Value) {
-			firstIsBigger = true;
-			bigger = json[i].Value;
-			smaller = json[i + 1].Value;
-		} else {
-			firstIsBigger = false;
-			bigger = json[i + 1].Value;
-			smaller = json[i].Value;
-		} 
 
 
-		ratio =  smaller / bigger;
+
+		ratio =  json[i].Value / json[i + 1].Value;
 		ratioRounded = Math.round(ratio * 100);
 
-		if (firstIsBigger) {
-			json[i].Value = 100;
-			json[i + 1].Value = ratioRounded;
-		} else {
-			json[i].Value = ratioRounded;
-			json[i + 1].Value = 100;
-		}
+        json[i].Value = 100;
+        json[i + 1].Value = ratioRounded;
 
 		console.log("ratio: " + ratio);
 	}
