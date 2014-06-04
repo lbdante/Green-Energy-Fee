@@ -1,0 +1,12 @@
+Writeup
+
+Basic arcitecture of everything:
+- We get a file from GEF with metrics on it (excel xlsx file), and save it to our server. The file name is configurable, and should be placed in the file gef_metrics_file.txt . The text file contains only the filename (no xlsx), so it contains GEF_metrics by default, therefore the file itself would be called GEF_metrics.xlsx on disk.
+- On the backend, we have a python parser (excelparse.py) which is extracting the values from excel to be displayed on the webpage. This is connected to a cherryPy web server which runs the parsing script with proper arguments when called from a browser or through AJAX (explained later). So, the idea here is that you can access $domain/lookup?building=OM and it will give you the text representation (in JSON) of the data for Old Main.
+- On the front end, we have nginx (web server) running, which is routing requests to $domain to $request_folder/index.html. nginx is connected to the cherryPy server, and that can be accessed through $domain/lookup?building=BC where BC is the building code
+- When a user visits the webpage, the request URL will be something like http://$domain/metrics?building=OM , this page will load and makes an AJAX request to http://$domain/lookup?building=OM, recieves the JSON representation of the metrics, parses the data, and displays it in a graph.
+
+Adding a building to the sidebar:
+There are two things that you have to edit. The entry on the side menu, and the building code to name mapping in the code.
+First, the side menu. Open menu.html and find the text "Building List", a few lines below, a list is started with each building. The syntax of a single building in the list looks like:
+<li><a href='?building=OM'><span>Old Main</span></a></li>
