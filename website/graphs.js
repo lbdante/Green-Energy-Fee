@@ -6,17 +6,7 @@ function getParameterByName(name) {
 }
 
 function fillBuildingTitle(buildingCode) {
-	buildings = {
-		"OM":"Old Main",
-		"BT":"Buchannan towers",
-		"BH":"Bond Hall",
-		"AI":"Academic Instructional Center",
-		"CF":"Communications Facility",
-		"BI":"Biology",
-		"AZ":"Arntzen Hall",
-		"MH":"Miller Hall"
-	}
-
+    // buildings should be in buildings.js, refactored to make gregs life easy
 	if (buildings.hasOwnProperty(buildingCode)) {
 		$('#buildingName').text(buildings[buildingCode] + " - Utility Usage");
 	}
