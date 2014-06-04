@@ -4,8 +4,7 @@
 	<!-- head -->
 	<head>
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-		<meta content="utf-8" http-equiv="encoding">
-	
+		<meta content="utf-8" http-equiv="encoding">	
 		<title>Green Energy Fee</title>
 		<link rel="stylesheet" type="text/css" href="IndexStyle.css">	
 		<link rel="stylesheet" type="text/css" href="MenuStyle.css">	
@@ -18,89 +17,63 @@
 		<script src="buildings.js"></script>
 		<script src="graphs.js"></script>		
 		<!-- Request for local manu_jquery js -->
-		<script type='text/javascript' src='menu_jquery.js'></script>
-
-	</head>
-	
-	<!-- body -->
-	<body>
-	
-		<!-- 
-		container:
-		contain all the elements for the website 
-		-->		
-		<div id="container">
+		<script type='text/javascript' src='menu_jquery.js'></script>	
+	</head>	
 		
-			<!-- 
-			navigation section contains:
-			- navigation_header
-			- navigation_list
-			- nagivation_footer
-			-->
+	<!-- body -->
+	<body>	
+		<div id="container">				
 			<div id="navigation">
 				<!-- navigation_header -->
 				<div id="navigation_header">
 					<!-- logo -->					
-					<img src="logo.png"/>							
+					<img src="logo.png" height=83% width=100%/>							
 				</div>
-				<!-- navigation_list -->				
+				<!--cssmenu -->				
 				<div id='cssmenu'>
 					<ul>
-                        <li><a href='#'><span>About GEF</span></a></li>
-                        <li class='has-sub'><a href='#'><span>Building List</span></a>
-                            <ul id="building_list">
-                                <li><a href='?building=BT'><span>Buchanan Towers</span></a></li>
-                                <li><a href='?building=OM'><span>Old Main</span></a></li>
-                                <li><a href='?building=BH'><span>Bond Hall</span></a></li>
-                                <li><a href='?building=AI'><span>Academic Instructional Center</span></a></li>
-                                <li><a href='?building=BH'><span>Bond Hall</span></a></li>							
-                                <li><a href='?building=CF'><span>Communications Facility</span></a></li>
-                                <li><a href='?building=BI'><span>Biology</span></a></li>
-                                <li><a href='?building=AH'><span>Arntzen Hall</span></a></li>
-                                <li class='last'><a href='?building=MH'><span>Miller Hall</span></a></li>
-                            </ul>
-                        </li>
-                        <li class='last'><a href='#'><span>Contact us</span></a></li>
-                        
-                        <li class='has-sub'><a href='#'><span>External Links</span></a>
-                            <ul>
-                                <li>
-                                    <a href='http://www.wwu.edu/' target='_blank'>
-                                        <span>Western Washington University</span>
-                                    </a>
-                                </li>
-                                <li class='last'>
-                                    <a href='http://www.wwu.edu/sustain/overview/introduction/' target='_blank'>
-                                        <span>Western Sustainability</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        
-                    </ul>
+               	<li class='active'><a href='#'><span>Home</span></a></li>
+                  <li class='has-sub'><a href='#'><span>Building List</span></a>
+                  	<ul id="building_list">
+                    		<li><a href='?building=BT'><span>Buchanan Towers</span></a></li>
+                        <li><a href='?building=OM'><span>Old Main</span></a></li>
+                        <li><a href='?building=BH'><span>Bond Hall</span></a></li>
+                        <li><a href='?building=AI'><span>Academic Instructional Center</span></a></li>
+                        <li><a href='?building=BH'><span>Bond Hall</span></a></li>							
+                        <li><a href='?building=CF'><span>Communications Facility</span></a></li>
+                        <li><a href='?building=BI'><span>Biology</span></a></li>
+                        <li><a href='?building=AH'><span>Arntzen Hall</span></a></li>
+                        <li class='last'><a href='?building=MH'><span>Miller Hall</span></a></li>
+							</ul>
+						</li>
+						<li class='last'><a href='#'><span>Contact us</span></a></li>
+                  <li class='has-sub'><a href='#'><span>External Links</span></a>
+							<ul>
+								<li>
+  									<a href='http://www.wwu.edu/' target='_blank'>
+   									<span>Western Washington University</span>
+									</a>
+   							</li>
+								<li class='last'>
+									<a href='http://www.wwu.edu/sustain/overview/introduction/' target='_blank'>
+										<span>Western Sustainability</span>
+									</a>
+								</li>
+ 							</ul>
+						</li>
+					</ul>
 				</div>
 				<!-- navigation_footer 
 				<div id="navigation_footer">
 					<h3>navigation_footer</h3>
-				</div>
-							-->
+				</div>-->
 			</div>
-			
-			<!-- 
-			content section contains:
-			- content_main
-			- content_footer
-			-->
-			<div id="content">			
-				
-				<!-- chartContainer -->				
+			<div id="content">		
 				<div id="chartContainer">					
-					
 					<div id="chart">
 						<h1 id="buildingName" align="center"></h1>
 					</div>
-				</div>	
-							
+				</div>								
 				<!-- content_footer -->
 				<!--
 				<div id="content_footer">
