@@ -29,7 +29,7 @@ function getBuildingJSON(buildingCode) {
 	
 	if (buildingCode == "" || buildingCode == null) return;
 
-	requestAddress = "http://localhost:8080/lookup?code=" + buildingCode;
+	requestAddress = "http://" + window.location.host +  "/lookup?code=" + buildingCode;
 
         console.log(requestAddress);
 	$.getJSON(requestAddress , function (response) { 

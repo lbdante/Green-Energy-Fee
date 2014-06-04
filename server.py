@@ -17,7 +17,6 @@ class Root:
     		return "Lookup error."
 
     lookup.exposed = True
-
 cherrypy.quickstart(Root())
 
 #---TODO---
