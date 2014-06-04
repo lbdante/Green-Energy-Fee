@@ -13,7 +13,7 @@ function fillBuildingTitle(buildingCode) {
 }
 
 // Given a building code ("OM"), get the JSON representation of waste, etc.
-function getBuildingJSON(buildingCode) {
+function getBuildingJSON(buildingCode, debug) {
   
 	console.log("getBuildingJSON called with " + buildingCode);
 	
@@ -21,7 +21,47 @@ function getBuildingJSON(buildingCode) {
 
 	requestAddress = "http://" + window.location.host +  "/lookup?code=" + buildingCode;
 
-        console.log(requestAddress);
+    console.log(requestAddress);
+    if (debug) {
+    var debugJSON = {
+       "code":"AI",
+       "name":"ACADEMIC INSTRUCTION CTR",
+       "currCo2":17639,
+       "prevCo2":44707,
+       "utilities":[
+          {
+             "currMeasurement":1339480,
+             "type":"electric",
+             "prevMeasurement":1653182,
+             "unit":"kWh"
+          },
+          {
+             "currMeasurement":3222909,
+             "type":"steam",
+             "prevMeasurement":8299788,
+             "unit":"thm"
+          },
+          {
+             "currMeasurement":null,
+             "type":"water",
+             "prevMeasurement":null,
+             "unit":"CCF"
+          },
+          {
+             "currMeasurement":null,
+             "type":"refuse",
+             "prevMeasurement":null,
+             "unit":"yds"
+          }
+       ],
+       "prevYear":2013,
+       "currYear":2014,
+       "co2unit":"lbs"
+    };
+    makeGraph(normalizeGraphData(transformJsonToGraphData(debugJSON)));
+    }
+
+        
 	$.getJSON(requestAddress , function (response) { 
 		console.log("AJAX respone recieved");
 		jsonData = transformJsonToGraphData(response);
@@ -127,7 +167,7 @@ window.onload = function(){
 	
 	buildingCode = getParameterByName("building");
 	// Request JSON building data
-	json = getBuildingJSON(buildingCode);
+	json = getBuildingJSON(buildingCode, true);
 	
 	fillBuildingTitle(buildingCode);
 }
